@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>TheVideoGameBox</title>
+  <!-- MI CSS -->
+  <link rel='stylesheet' href='/stylesheets/main.css' />
+  <!-- BOOTSTRAP -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.1/font/bootstrap-icons.css">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  <!-- JQUERY -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <!-- SWIPER -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar sticky-top d-flex align-items-center justify-content-between shadow mb-5" id="cabecera">
+    <div>
+      <img src="/images/logo_grande_blanco.png" height="68" id="logo">
+      <div class="btn-group ms-5 dropend">
+        <button type="button" class="dropdown-toggle" data-toggle="dropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false" id="despliegueHeader">
+          Juegos&nbsp;&nbsp;<i class="bi bi-controller"></i>
+        </button>
+        <div class="dropdown-menu dropdown-menu-end shadow">
+          <a class="dropdown-item" href="/misAvisos">Mis avisos</a>
+          <a class="dropdown-item" href="/historicoAvisos">Historial de avisos</a>
+          <a class="dropdown-item" href="/avisosEntrantes">Avisos entrantes</a>
+          <a class="dropdown-item" href="/gestionUsuarios">Gestión de usuarios</a>
+          <div class="dropdown-divider"></div>
+          <a class="cierre_sesion dropdown-item" href="/logout"><b>Cerrar sesión&nbsp;&nbsp;<i
+                class="bi bi-box-arrow-right"></i></b></a>
+        </div>
+      </div>
+    </div>
+    <div class="me-4">
+      <div class="input-group">
+        <input type="search" class="form-control" id="id_search" name="search" placeholder="Search" aria-label="Search" aria-describedby="basic-addon1">
+        <span class="input-group-text" id="lupa">
+          <i class="bi bi-search" id="searchHeader" width="22" height="22" style="cursor: pointer"></i>
+        </span>
+      </div>
+    </div>
+  </nav>
+  <div class="d-flex flex-column" style="position: relative;">
+    <h1 class="titulo" id="topGames">Juegos más populares</h1>
+    <div class="carrusel" id="carruselTopGames">
+      <button data-slide="prev" id="prevTopGames">
+        <i class="bi bi-caret-left-fill"></i>
+        Previa
+      </button>
+      <div class="d-flex align-items-center">
+        <% topGames.forEach(function(game) { %>
+          <div class="d-flex justify-content-start align-items-end cards" style="background: url('<%= game.image %>'); background-repeat: no-repeat; background-size: cover; background-position: center;" data-id="<%= game.image %>" data-name="<%= game.name %>">
+          </div>
+          <% }); %>
+      </div>
+      <button data-slide="next" id="nextTopGames">
+        Siguiente
+        <i class="bi bi-caret-right-fill"></i>
+      </button>
+    </div>
+  </div>
+</body>
+
+<script>
+  $(".cards").hover(function () {
+    let img = $(this).data("id");
+    let name = $(this).data("name");
+    $(this).css("background", "linear-gradient(to bottom, transparent, #333333), url(" + img + ")");
+    $(this).append("<div class='container'><h2 class='nameGame'>" + name + "</h2></div>")
+    $(this).children().show();
+  }, function () {
+    let img = $(this).data("id");
+    $(this).css("background", "url(" + img + ")");
+    $(this).children().remove();
+  });
+
+  let ticks = 0;
+
+  $("#nextTopGames").click(function(){
+    console.log("Next")
+    console.log(ticks + " antes")
+    if(ticks === 0) $("#prevTopGames").show("linear");
+    ticks = ticks + 1;
+    $("#carruselTopGames").scrollLeft($("#carruselTopGames").scrollLeft() + 265);
+    if(ticks === 9) $("#nextTopGames").hide("linear");
+    console.log(ticks + " despues")
+  })
+  $("#prevTopGames").click(function(){
+    console.log("Prev")
+    console.log(ticks + " antes")
+    if(ticks === 9) $("#nextTopGames").show("linear");
+    if(ticks === 2){ticks = 0;} 
+    else{ticks = ticks - 1;}
+    $("#carruselTopGames").scrollLeft($("#carruselTopGames").scrollLeft() - 265);
+    if(ticks === 0)$("#prevTopGames").hide("linear");
+    console.log(ticks + " despues")
+  });
+
+  $(document).ready(function(){
+    $("#prevTopGames").hide();
+  })
+
+</script>
+
+</html>

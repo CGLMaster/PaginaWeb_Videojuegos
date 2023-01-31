@@ -1,0 +1,129 @@
+body {
+  background-image: url("/images/fondo.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
+}
+
+/*  CABECERA  */
+
+#cabecera {
+  background-color: #571396;
+}
+
+#logo {
+  margin-left: 40px;
+}
+
+#despliegueHeader {
+  border: none;
+  background: transparent;
+  color: white;
+  font-size: 17px;
+}
+
+#despliegueHeader::after {
+  content: none;
+}
+
+#despliegueHeader:hover {
+  text-shadow: 0 0 10px rgba(255, 255, 255, 1), 0 0 20px rgba(255, 255, 255, 1), 0 0 30px rgba(255, 255, 255, 1), 0 0 40px #ff00de, 0 0 70px #ff00de, 0 0 80px #ff00de, 0 0 100px #ff00de;
+}
+
+#lupa {
+  border-top-left-radius: 0 !important;
+  border-bottom-left-radius: 0 !important;
+  background-color: #9032e9;
+  color: white;
+}
+
+#lupa:hover {
+  background-color: #652c9e;
+  color: white;
+}
+
+/* CUERPO */
+
+.titulo {
+  color: white;
+  text-align: end;
+  font-size: 24px;
+  padding: 7px;
+  padding-right: 25px;
+  margin-bottom: 20px;
+  width: 30%;
+}
+
+.cards{
+  scroll-snap-align: start;
+  height: 320px !important;
+  width: 240px !important;
+  background-size:cover !important;
+  background-position:center !important;
+  background-repeat:no-repeat !important;
+  margin-right: 25px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+
+.nameGame{
+  color: white;
+  font-size: 19px;
+  margin-bottom: 15px;
+}
+
+/* TOP JUEGOS */
+
+#topGames {
+  background: linear-gradient(to left, #045502b3 35%, #00ff22b3);
+  border-top-right-radius: 10px;
+  border-bottom-right-radius: 10px;
+}
+
+#carruselTopGames{
+  overflow:scroll;
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  height: 320px !important;
+  grid-auto-flow: column;
+  scroll-behavior: auto;
+  gap: 1.2rem;
+  overflow-y: hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  align-items: center;
+  margin-left: 33px;
+  margin-right: 32px;
+  overflow-x: hidden;
+}
+
+
+#prevTopGames{
+  width: 100px !important;
+  border-top-left-radius: 5px;
+  border-bottom-left-radius: 5px;
+  height: 320px;
+  border: none;
+  background-color: rgba(20, 20, 20, 0.7);
+  position: absolute;
+  left:33px;
+  color: white;
+}
+
+
+#nextTopGames{
+  width: 100px !important;
+  border-top-right-radius: 5px;
+  border-bottom-right-radius: 5px;
+  height: 320px;
+  border: none;
+  background-color: rgba(20, 20, 20, 0.7);
+  position: absolute;
+  right:32px;
+  color: white;
+}
+
+#prevTopGames:hover, #nextTopGames:hover{
+  background-color: rgba(20, 20, 20, 0.9);
+}

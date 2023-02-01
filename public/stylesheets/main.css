@@ -53,6 +53,24 @@ margin: 0;
 color: white;
 }
 
+#swiperMain{
+  background: url('/images/main.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-left: 60px;
+  padding-right: 60px;
+  padding-bottom: 60px;
+}
+
+#titleMain{
+  font-size: 90px;
+}
+
 .mainTitle{
   font-weight: bold;
   font-family: 'Lato', sans-serif;
@@ -151,3 +169,47 @@ color: white;
 #prevTopGames:hover, #nextTopGames:hover{
   background-color: rgba(20, 20, 20, 0.9);
 }
+
+
+/* ANIMACIONES */
+
+.animation-title{
+  animation: 4.5s cubic-bezier(.25, 1, .30, 1) wipe-in-right both;
+}
+
+.animation-carrusel{
+  animation: 4.5s cubic-bezier(.25, 1, .30, 1) wipe-in-left both;
+}
+
+@keyframes wipe-in-bottom-right {
+  from {
+    clip-path: polygon(0 0, 0 0, 0 0, 0 50%);
+  }
+  to {
+    clip-path: polygon(-50% 0%, 200% 0, 0 200%, 0 -50%);
+  }
+  /* animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-bottom-right both; */
+}
+
+@keyframes wipe-in-left {
+  from {
+    clip-path: inset(0 0 0 100%);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+  /* animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-left both; */
+}
+
+
+@keyframes wipe-in-right {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+  }
+  /* animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-right both; */
+}
+
+

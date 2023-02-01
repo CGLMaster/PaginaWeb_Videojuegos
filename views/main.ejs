@@ -47,15 +47,15 @@
     </div>
   </nav>
 
-  <!-- Slider main container -->
   <div class="swiper">
-    <!-- Additional required wrapper -->
     <div class="swiper-wrapper">
-      <!-- Slides -->
-      <div class="swiper-slide">
-        <img src="/images/main.png">
+      <div class="swiper-slide" id="swiperMain">
+        <h1 id="titleMain">Welcome to the country of video games</h1>
+        <img src="/images/logo_grande_blanco.png" height="300">
+        <h2>Your trusted video game website, where you can find the newest games, the most populars or find them by their genres.</h2>
+        <h2>What are you waiting for?</h2>
       </div>
-      <% newGames.forEach(function(games) { %>
+      <% bestGames.forEach(function(games) { %>
         <% for(var i = 0; i < 1; i++) { %>
           <div class="swiper-slide" style="background: linear-gradient(to left, transparent, #2b40ff), url('<%= games.screenshots[i] %>'); background-repeat: no-repeat; background-size: 100%; background-position: center;">
           <h1 class="mainTitle"><%= games.name%></h1>
@@ -64,19 +64,16 @@
         <% } %>
       <% }); %>
     </div>
-    <!-- If we need pagination -->
     <div class="swiper-pagination"></div>
 
-    <!-- If we need navigation buttons -->
     <div class="swiper-button-prev"></div>
     <div class="swiper-button-next"></div>
 
-    <!-- If we need scrollbar -->
     <div class="swiper-scrollbar"></div>
   </div>
-  <div class="d-flex flex-column">
-    <h1 class="titulo" id="topGames">Most games populars</h1>
-    <div class="carrusel" id="carruselTopGames">
+  <div class="d-flex flex-column paragraphs">
+    <h1 class="titulo animate-title" id="topGames">Most populars games</h1>
+    <div class="carrusel animate-carrusel" id="carruselTopGames">
       <button data-slide="prev" id="prevTopGames">
         <i class="bi bi-caret-left-fill"></i>
         Prev
@@ -97,6 +94,8 @@
 <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script>
 
+  // SWIPER CODE
+
   const swiper = new Swiper('.swiper', {
     // Optional parameters
     direction: 'horizontal',
@@ -106,7 +105,9 @@
     },
     // If we need pagination
     pagination: {
-      el: '.swiper-pagination',
+        el: '.swiper-pagination',
+        type: "bullets",
+        clickable: true
     },
 
     // Navigation arrows
@@ -120,6 +121,55 @@
       el: '.swiper-scrollbar',
     },
   });
+
+  // ANIMATION CODE
+
+      // CAROUSEL ANIMATION
+
+  const animate_carrusel = document.querySelectorAll(".animate-carrusel");
+  
+  const observerCarrusel = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+      if(entry.isIntersecting){
+        entry.target.classList.add('animation-carrusel');
+      }
+      else{
+        entry.target.classList.remove('animation-carrusel');
+      }
+    })
+  },{
+    threshold: 0
+  });
+  
+  for(let i = 0; i < animate_carrusel.length; i++){
+    const c = animate_carrusel[i];
+    observerCarrusel.observe(c);
+  }
+
+      // CAROUSEL TITLEs
+
+  const animate_title = document.querySelectorAll(".animate-title");
+
+  const observerTitle = new IntersectionObserver(function(entries){
+    entries.forEach(function(entry){
+        if(entry.isIntersecting){
+          entry.target.classList.add('animation-title');
+        }
+        else{
+          entry.target.classList.remove('animation-title');
+        }
+    })
+  },{
+    threshold: 0
+  });
+
+  for(let i = 0; i < animate_title.length; i++){
+    const t = animate_title[i];
+    observerTitle.observe(t);
+  }
+
+
+  // CARDS CODE
 
   $(".cards").hover(function () {
     let img = $(this).data("id");
@@ -136,23 +186,17 @@
   let ticks = 0;
 
   $("#nextTopGames").click(function(){
-    console.log("Next")
-    console.log(ticks + " antes")
     if(ticks === 0) $("#prevTopGames").show("linear");
     ticks = ticks + 1;
     $("#carruselTopGames").scrollLeft($("#carruselTopGames").scrollLeft() + 265);
     if(ticks === 9) $("#nextTopGames").hide("linear");
-    console.log(ticks + " despues")
   })
   $("#prevTopGames").click(function(){
-    console.log("Prev")
-    console.log(ticks + " antes")
     if(ticks === 9) $("#nextTopGames").show("linear");
     if(ticks === 2){ticks = 0;} 
     else{ticks = ticks - 1;}
     $("#carruselTopGames").scrollLeft($("#carruselTopGames").scrollLeft() - 265);
     if(ticks === 0)$("#prevTopGames").hide("linear");
-    console.log(ticks + " despues")
   });
 
   $(document).ready(function(){

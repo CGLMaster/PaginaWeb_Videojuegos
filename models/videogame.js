@@ -19,6 +19,9 @@ const videogameScheme = new mongoose.Schema(
         platforms:{
             type: [String]
         },
+        screenshots:{
+            type: [String]
+        },
         summary:{
             type: String
         },

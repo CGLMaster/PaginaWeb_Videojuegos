@@ -13,12 +13,13 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
   <!-- SWIPER -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.css"/>
-  <script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
+  <!-- FONT LETTERS -->
+  <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
 </head>
 
 <body>
   <!-- NAVBAR -->
-  <nav class="navbar sticky-top d-flex align-items-center justify-content-between shadow mb-5" id="cabecera">
+  <nav class="navbar sticky-top d-flex align-items-center justify-content-between shadow" id="cabecera">
     <div>
       <img src="/images/logo_grande_blanco.png" height="68" id="logo">
       <div class="btn-group ms-5 dropend">
@@ -45,12 +46,40 @@
       </div>
     </div>
   </nav>
-  <div class="d-flex flex-column" style="position: relative;">
-    <h1 class="titulo" id="topGames">Juegos más populares</h1>
+
+  <!-- Slider main container -->
+  <div class="swiper">
+    <!-- Additional required wrapper -->
+    <div class="swiper-wrapper">
+      <!-- Slides -->
+      <div class="swiper-slide">
+        <img src="/images/main.png">
+      </div>
+      <% newGames.forEach(function(games) { %>
+        <% for(var i = 0; i < 1; i++) { %>
+          <div class="swiper-slide" style="background: linear-gradient(to left, transparent, #2b40ff), url('<%= games.screenshots[i] %>'); background-repeat: no-repeat; background-size: 100%; background-position: center;">
+          <h1 class="mainTitle"><%= games.name%></h1>
+          <p class="resumen"><%= games.summary%></p>
+          </div>
+        <% } %>
+      <% }); %>
+    </div>
+    <!-- If we need pagination -->
+    <div class="swiper-pagination"></div>
+
+    <!-- If we need navigation buttons -->
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-button-next"></div>
+
+    <!-- If we need scrollbar -->
+    <div class="swiper-scrollbar"></div>
+  </div>
+  <div class="d-flex flex-column">
+    <h1 class="titulo" id="topGames">Most games populars</h1>
     <div class="carrusel" id="carruselTopGames">
       <button data-slide="prev" id="prevTopGames">
         <i class="bi bi-caret-left-fill"></i>
-        Previa
+        Prev
       </button>
       <div class="d-flex align-items-center">
         <% topGames.forEach(function(game) { %>
@@ -59,14 +88,39 @@
           <% }); %>
       </div>
       <button data-slide="next" id="nextTopGames">
-        Siguiente
+        Next
         <i class="bi bi-caret-right-fill"></i>
       </button>
     </div>
   </div>
 </body>
-
+<script src="https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js"></script>
 <script>
+
+  const swiper = new Swiper('.swiper', {
+    // Optional parameters
+    direction: 'horizontal',
+    loop: true,
+    autoplay: {
+    delay: 5000,
+    },
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  });
+
   $(".cards").hover(function () {
     let img = $(this).data("id");
     let name = $(this).data("name");

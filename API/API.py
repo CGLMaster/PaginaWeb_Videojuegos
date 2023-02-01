@@ -31,7 +31,7 @@ for n in num:
     from igdb.igdbapi_pb2 import GameResult
     byte_array = wrapper.api_request(
                 'games', 
-                f'f name, cover.url, involved_companies.company.name, genres.name, platforms.name, summary, first_release_date, aggregated_rating_count, aggregated_rating, rating; l 500; offset {n}; where first_release_date > 1199142000 & cover.url != null & involved_companies.company.name != null & name !~ *"Hentai"* & name !~ *"Sex"* & summary !~ *"Hentai"* & summary !~ *"sex"*; sort first_release_date desc;'
+                f'f name, cover.url, involved_companies.company.name, genres.name, screenshots.url, platforms.name, summary, first_release_date, aggregated_rating_count, aggregated_rating, rating; l 500; offset {n}; where first_release_date > 1199142000 & cover.url != null & involved_companies.company.name != null & screenshots.url != null & name !~ *"Hentai"* & name !~ *"Sex"* & summary !~ *"Hentai"* & summary !~ *"sex"*; sort first_release_date desc;'
               )
     games_message = GameResult()
     
@@ -90,6 +90,23 @@ for n in num:
        else:
            compa.append(com)
     data["involved_companies"] = compa
+    
+    # Obtencion de las compañias
+    
+    print("Obtencion de las screenshots")
+    
+    screenshot = data["screenshots"]
+    screen = []
+    for scre in screenshot:
+       if str(scre) != 'nan':
+            aux = []
+            for sc in scre:
+                a = sc["url"].replace('t_thumb', 't_screenshot_big_2x')
+                aux.append(a)
+            screen.append(aux)
+       else:
+           screen.append(scre)
+    data["screenshots"] = screen
     
     # Obtencion de las portadas
     

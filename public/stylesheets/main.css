@@ -96,18 +96,52 @@ body {
   width: 30%;
 }
 
+/* BUTTON VIEW MORE */
+
+.viewMoreButton{
+  margin-top: 20px;
+  margin-left: 40px;
+  padding: 5px 15px;
+  font-size: 12px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  text-transform: uppercase;
+  letter-spacing: 2.5px;
+  font-weight: 500;
+  color: #7623c4;
+  background-color: #fff;
+  border: none;
+  border-radius: 45px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
+  outline: none;
+}
+
+.viewMoreButton:hover {
+  background-color: #7623c4;
+  box-shadow: 0px 15px 20px rgba(46, 229, 157, 0.4);
+  color: #fff;
+  transform: translateY(-7px);
+}
+
+.viewMoreButton:active {
+  transform: translateY(-1px);
+}
 
 .nameGame {
   color: white;
   font-size: 19px;
   margin-bottom: 15px;
 }
+
 .MultiCarousel {
   float: left;
   overflow: hidden;
   width: 100%;
   position: relative;
-  /* height: 340px; */
+  height: 420px;
 }
 
 .MultiCarousel .MultiCarousel-inner {
@@ -117,7 +151,7 @@ body {
 
 .MultiCarousel .MultiCarousel-inner .item {
   float: left;
-  height: 320px;
+  height: 400px;
   width: 240px;
   background-size: cover;
   background-position: center;
@@ -166,6 +200,7 @@ body {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   animation: 15s gradient ease infinite;
+  margin-left: 70px;
 }
 
 #comingDiv{
@@ -257,6 +292,44 @@ body {
   }
 }
 
+/* STARS ANIMATION */
+
+.star {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: rgba(255,255,255,0.0);
+  border-radius: 5px;
+}
+.star_small {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: rgba(255,255,255,0.0);
+  border-radius: 5px;
+}
+
+@keyframes twinkle {
+  0% {
+    transform: scale(1, 1);
+    background: rgba(255,255,255,0.0);
+    animation-timing-function: ease-in;
+  }
+  60% {
+    transform: scale(0.8, 0.8);
+    background: rgba(255,255,255,1);
+    animation-timing-function: ease-out;
+  }
+  80% {
+    background: rgba(255,255,255,0.00);
+    transform: scale(1, 1);
+  }
+  100% {
+    background: rgba(255,255,255,0.0);
+    transform: scale(1, 1);
+  }
+}
+
 /* TINY WINDOWS */
 
 @media screen and (max-width: 1600px){
@@ -267,4 +340,13 @@ body {
   #titleMain {
     font-size: 80px;
   }
+
+  .MultiCarousel{
+    height: 340px;
+  }
+
+  .MultiCarousel .MultiCarousel-inner .item{
+    height: 320px;
+  }
 }
+

@@ -96,18 +96,6 @@ body {
   width: 30%;
 }
 
-.cards {
-  scroll-snap-align: start;
-  height: 320px;
-  width: 240px;
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  margin-right: 25px;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
 
 .nameGame {
   color: white;
@@ -119,7 +107,7 @@ body {
   overflow: hidden;
   width: 100%;
   position: relative;
-  height: 340px;
+  /* height: 340px; */
 }
 
 .MultiCarousel .MultiCarousel-inner {
@@ -167,6 +155,24 @@ body {
   background: #ccc;
 }
 
+/* COMING SOON */
+
+#commigSoon{
+  margin-top:0;
+  font-size:50px;
+  font-weight: bold;
+  background: linear-gradient(-45deg,#fbff01, orange, #00ffcc);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: 15s gradient ease infinite;
+}
+
+#comingDiv{
+  background: linear-gradient(to left, #24083f 35%, #a240fe);
+  padding-bottom: 20px;
+}
+
 /* TOP GAMES */
 
 #topGames {
@@ -175,7 +181,8 @@ body {
   border-bottom-right-radius: 10px;
 }
 
- /* SHOOTERS GAMES */
+
+/* SHOOTERS GAMES */
 
 #shooterGames{
   background: linear-gradient(to left, #550202b3 35%, #ff3c00b3);
@@ -236,6 +243,18 @@ body {
   }
 
   /* animation: 2.5s cubic-bezier(.25, 1, .30, 1) wipe-in-right both; */
+}
+
+@keyframes gradient {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+  }
 }
 
 /* TINY WINDOWS */

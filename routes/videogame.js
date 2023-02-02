@@ -13,7 +13,8 @@ router.get('/', async(request, response) => {
     const topGames = await Videogame.find({rating: {$gt:80}, first_release_date : {$gt: 1640991600}, aggregated_rating_count: {$gt: 8}}).sort({first_release_date : -1}).limit(15);
     const shooterGames = await Videogame.find({genres: "Shooter", first_release_date : {$lt: date}, category : 0}).sort({first_release_date : -1}).limit(15);
     const adventureGames = await Videogame.find({genres: "Adventure", first_release_date : {$lt: date}, category : 0}).sort({first_release_date : -1}).limit(15);
-    response.render("main", {"bestGames" : bestGames, "topGames": topGames, "shooterGames": shooterGames, "adventureGames": adventureGames});
+    const comingSoon = await Videogame.find({first_release_date : {$gt: date}, category : 0}).sort({first_release_date : 1}).limit(15);
+    response.render("main", {"bestGames" : bestGames, "topGames": topGames, "shooterGames": shooterGames, "adventureGames": adventureGames, "comingSoon": comingSoon});
 });
 
 

@@ -71,6 +71,22 @@
 
     <div class="swiper-scrollbar"></div>
   </div>
+  <div class="d-flex flex-column" id="comingDiv">
+    <h1 class="titulo animate-title" id="commigSoon"><span style="font-size:80px;">C</span>oming <span style="font-size:80px;">S</span>oon</h1>
+    <div class="row ms-3 me-3 animate-carrusel">
+      <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
+          <div class="MultiCarousel-inner">
+              <% comingSoon.forEach(function(game) { %>
+                <div class="item d-flex justify-content-start align-items-end cards" style="background: url('<%= game.image %>'); background-repeat: no-repeat; background-size: cover; background-position: center;" data-id="<%= game.image %>" data-name="<%= game.name %>">
+                    
+                </div>
+                <% }); %>
+          </div>
+          <button class="btn btn-primary leftLst"><i class="bi bi-caret-left-fill"></i></button>
+          <button class="btn btn-primary rightLst"><i class="bi bi-caret-right-fill"></i></button>
+      </div>
+    </div>
+  </div>
   <div class="d-flex flex-column">
     <h1 class="titulo animate-title" id="topGames">Most populars games</h1>
     <div class="row ms-3 me-3 animate-carrusel">
@@ -163,7 +179,7 @@
         entry.target.classList.add('animation-carrusel');
       }
       else{
-        entry.target.classList.remove('animation-carrusel');
+       // entry.target.classList.remove('animation-carrusel');
       }
     })
   },{
@@ -185,7 +201,7 @@
           entry.target.classList.add('animation-title');
         }
         else{
-          entry.target.classList.remove('animation-title');
+         // entry.target.classList.remove('animation-title');
         }
     })
   },{
@@ -203,12 +219,12 @@
   $(".cards").hover(function () {
     let img = $(this).data("id");
     let name = $(this).data("name");
-    $(this).css("background", "linear-gradient(to bottom, transparent, #333333), url(" + img + ")");
+    $(this).css("background", "linear-gradient(to bottom, transparent, #333333), url(" + img + ")").css("background-size", "cover").css("background-position", "center").css("background-repeat", "no-repeat");
     $(this).append("<div class='container'><h2 class='nameGame'>" + name + "</h2></div>")
     $(this).children().show();
   }, function () {
     let img = $(this).data("id");
-    $(this).css("background", "url(" + img + ")");
+    $(this).css("background", "url(" + img + ")").css("background-size", "cover").css("background-position", "center").css("background-repeat", "no-repeat");
     $(this).children().remove();
   });
 
@@ -254,8 +270,8 @@
             if (bodyWidth >= 1200) {
                 incno = itemsSplit[3];
                 itemWidth = sampwidth / incno;
-                //console.log("Primero if: " + itemWidth)
-                //console.log(itemWidth * itemNumbers)
+                // console.log("Primero if: " + itemWidth)
+                // console.log(itemWidth * itemNumbers)
             }
             else if (bodyWidth >= 992) {
                 incno = itemsSplit[2];
@@ -266,14 +282,14 @@
             else if (bodyWidth >= 768) {
                 incno = itemsSplit[1];
                 itemWidth = sampwidth / incno;
-                //console.log("Tercer if: " + itemWidth)
-                //console.log(itemWidth * itemNumbers)
+                // console.log("Tercer if: " + itemWidth)
+                // console.log(itemWidth * itemNumbers)
             }
             else {
                 incno = itemsSplit[0];
                 itemWidth = sampwidth / incno;
-                //console.log("Ultimo if: " + itemWidth)
-                //console.log(itemWidth * itemNumbers)
+                // console.log("Ultimo if: " + itemWidth)
+                // console.log(itemWidth * itemNumbers)
             }
             $(this).css({ 'transform': 'translateX(0px)', 'width': itemWidth * itemNumbers });
             $(this).find(itemClass).each(function () {
@@ -311,8 +327,8 @@
             //console.log("Transversal: "+ translateXval)
             $(el + ' ' + leftBtn).removeClass("over");
             //console.log(itemsCondition - itemWidth / 2)
-            if (translateXval >= itemsCondition - itemWidth / 2 - 266*2) {
-                translateXval = itemsCondition -  266*2;
+            if (translateXval >= itemsCondition - itemWidth / 2) {
+                translateXval = itemsCondition;
                 $(el + ' ' + rightBtn).addClass("over");
             }
         }

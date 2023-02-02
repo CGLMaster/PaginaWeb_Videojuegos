@@ -22,7 +22,7 @@ wrapper = IGDBWrapper("18tfq728xi2b0cxvsnhs69znuzrelk", i['access_token'])
 
 print("Obtencion de los juegos")
 
-num = [500,1000,1500,2000,2500,3000,3500,4000,4500,5000,5500,6000,6500,7000,7500,8000,8500]
+num = [500,1000,1500,2000,2500,3000,3500,4000,4500,5000,5500,6000,6500,7000,7500,8000,8500,9000,9500,10000]
 
 for n in num:
     
@@ -202,9 +202,15 @@ for n in num:
         data15 = data
     elif n == 8000:
         data16 = data
-    else: data17 = data
+    elif n == 8500:
+        data17 = data
+    elif n == 9000:
+        data18 = data
+    elif n == 9500:
+        data19 = data        
+    else: data20 = data
     
-dataBase = pd.concat([data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, data11, data12, data13, data14, data15, data16, data17])
+dataBase = pd.concat([data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, data11, data12, data13, data14, data15, data16, data17, data18, data19, data20])
 
 dataBase.to_json("games.json", orient='index')
 

@@ -3,9 +3,11 @@ const { Double } = require('mongodb');
 const mongoose = require('mongoose');
 const videogameScheme = new mongoose.Schema(
     {   
-
+        category:{
+            type: Number
+        },
         first_release_date:{
-            type: Number,
+            type: Number
         },
         genres:{
             type: [String]
@@ -22,23 +24,29 @@ const videogameScheme = new mongoose.Schema(
         screenshots:{
             type: [String]
         },
+        similar_games:{
+            type: [String]
+        },
         summary:{
             type: String
         },
+        websites:{
+            type: [String]
+        },
         image:{
-            type: String,
+            type: String
         },
         cover:{
-            type: String,
+            type: String
         },
         rating:{
-            type: Number,
+            type: Number
         },
         aggregated_rating:{
-            type: Number,
+            type: Number
         },
         aggregated_rating_count:{
-            type: Number,
+            type: Number
         }
 
     }

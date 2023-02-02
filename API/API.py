@@ -31,7 +31,7 @@ for n in num:
     from igdb.igdbapi_pb2 import GameResult
     byte_array = wrapper.api_request(
                 'games', 
-                f'f name, cover.url, involved_companies.company.name, genres.name, screenshots.url, platforms.name, summary, first_release_date, aggregated_rating_count, aggregated_rating, rating; l 500; offset {n}; where first_release_date > 1199142000 & cover.url != null & involved_companies.company.name != null & screenshots.url != null & name !~ *"Hentai"* & name !~ *"Sex"* & summary !~ *"Hentai"* & summary !~ *"sex"*; sort first_release_date desc;'
+                f'f name, cover.url, involved_companies.company.name, genres.name, screenshots.url, platforms.name, summary, first_release_date, aggregated_rating_count, aggregated_rating, rating, websites.url, category, similar_games.name; l 500; offset {n}; where websites.category = 1 & (category = 0 | category = 8) & first_release_date > 1199142000 & cover.url != null & involved_companies.company.name != null & screenshots.url != null & name !~ *"Hentai"* & name !~ *"Sex"* & summary !~ *"Hentai"* & summary !~ *"sex"*; sort first_release_date desc;'
               )
     games_message = GameResult()
     
@@ -58,6 +58,22 @@ for n in num:
        else:
            gen.append(g)
     data["genres"] = gen
+    
+    # Obtencion de los websites
+    
+    print("Obtencion de las Websites")
+    
+    websites = data["websites"]
+    website = []
+    for web in websites:
+       if str(web) != 'nan':
+            aux = []
+            for w in web:
+                aux.append(w["url"])
+            website.append(aux)
+       else:
+           website.append(g)
+    data["websites"] = website
     
     # Obtencion de las plataformas
     
@@ -91,7 +107,23 @@ for n in num:
            compa.append(com)
     data["involved_companies"] = compa
     
-    # Obtencion de las compañias
+    # Obtencion de los juegos similares
+    
+    print("Obtencion de los juegos similares")
+    
+    similar_games = data["similar_games"]
+    similarG = []
+    for simil in similar_games:
+       if str(simil) != 'nan':
+            aux = []
+            for s in simil:
+                aux.append(s["name"])
+            similarG.append(aux)
+       else:
+           similarG.append(simil)
+    data["similar_games"] = similarG
+    
+    # Obtencion de las screenshots
     
     print("Obtencion de las screenshots")
     

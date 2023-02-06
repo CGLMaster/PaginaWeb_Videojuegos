@@ -349,7 +349,7 @@
 
  // CODE TO ADD STARS ON THE COMING SOON CAROUSEL (solo quiero que aparezcan en 2/3 de lo ancho)
 console.log($(window).height())
-for (var i = 0; i < 500; i++) {
+for (var i = 0; i < 300; i++) {
   if(i%2 === 0){
     var star = '<div class="star" style="animation: twinkle '+((Math.random()*5) + 5)+'s linear '+((Math.random()*5) + 5)+'s infinite; top: '+($(".swiper").height() + 10 + Math.random()*($(window).height()/4))+'px; right: '+Math.random()*(($(window).width()*2)/3)+'px;"></div>';
     $('#comingDiv').append(star);

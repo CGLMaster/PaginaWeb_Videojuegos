@@ -309,6 +309,10 @@ body {
   border-radius: 5px;
 }
 
+.animate-carrusel{
+  z-index: 2;
+}
+
 @keyframes twinkle {
   0% {
     transform: scale(1, 1);

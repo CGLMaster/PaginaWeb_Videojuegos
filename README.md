@@ -18,9 +18,9 @@ Para poder obtener la información de la base de datos empleo la relación entre
 
 ## Cómo funciona
 
-<h1 align="center" color="red">
-  Actualmente sigue en desarrollo
-<h1>
+<h1 align="center">
+  <span style="color: red;">Actualmente sigue en desarrollo</span>
+</h1>
 
 Para demostrar su funcionamiento dejo un video de la demo del proyecto en la cual se ven todos los aspectos que se pueden realizar.
 
@@ -33,3 +33,7 @@ Para demostrar su funcionamiento dejo un video de la demo del proyecto en la cua
 ## Propietario
 
 * **Carlos** Gómez López
+
+
+
+

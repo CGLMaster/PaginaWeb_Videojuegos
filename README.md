@@ -16,7 +16,7 @@ Los videojuegos fueron extraídos de [IGDB API](https://api-docs.igdb.com/#examp
 Toda la información se guarda en una base de MongoDB local importando los videojuegos con formato JSON. En la colección hay almacenados 10000 juegos.
 Para poder obtener la información de la base de datos empleo la relación entre node.js y mongoose, empleando para ello esquemas.
 
-## Cómo funciona --> Actualmente sigue en desarrollo
+## ¿Cómo funciona? --> Actualmente sigue en desarrollo
 
 
 Para demostrar su funcionamiento dejo un video de la demo del proyecto en la cual se ven todos los aspectos que se pueden realizar.
